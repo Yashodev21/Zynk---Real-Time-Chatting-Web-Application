@@ -11,7 +11,7 @@ import { app, server } from "./lib/socket.js";
 
 const __dirname = path.resolve();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 /* Middlewares */
 app.use(express.json({ limit: "5mb" }));
