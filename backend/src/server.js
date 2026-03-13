@@ -20,8 +20,18 @@ app.use(cookieParser());
 /* CORS configuration */
 app.use(
   cors({
-    origin: "https://zynk-real-time-chatting-web-applica.vercel.app/",
-    credentials: true
+    origin: function (origin, callback) {
+      if (
+        !origin ||
+        origin.includes("localhost") ||
+        origin.includes("vercel.app")
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
 
